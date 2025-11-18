@@ -1,0 +1,22 @@
+.typewriter {
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+}
+
+.cursor {
+  color: #00ffff;
+  animation: blink 1s infinite ease-in-out;
+  line-height: 1;
+  font-size: inherit;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}

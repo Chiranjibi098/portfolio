@@ -1,24 +1,5 @@
-import "../assets/CSS/Prototype-section.css";
+import "../assets/CSS/WebPrototype.css";
 import { useState, useLayoutEffect, useRef } from "react";
-
-const slides = [
-  {
-    image: "https://i.imgur.com/NBvMH7H.png",
-    title: "Animation",
-  },
-  {
-    image: "https://i.imgur.com/dXBbCXR.png",
-    title: "CSS",
-  },
-  {
-    image: "https://i.imgur.com/qcOXwPo.png",
-    title: "HTML",
-  },
-  {
-    image: "https://i.imgur.com/SSVVeuG.png",
-    title: "React",
-  },
-];
 
 function getRect(el) {
   return el.getBoundingClientRect();
@@ -28,15 +9,18 @@ function flip(firstRect, el) {
   requestAnimationFrame(() => {
     const lastEl = el;
     const lastRect = getRect(lastEl);
+
     const dx = lastRect.x - firstRect.x;
     const dy = lastRect.y - firstRect.y;
     const dw = lastRect.width / firstRect.width;
     const dh = lastRect.height / firstRect.height;
+
     lastEl.dataset.flipping = true;
     lastEl.style.setProperty("--dx", dx);
     lastEl.style.setProperty("--dy", dy);
     lastEl.style.setProperty("--dw", dw);
     lastEl.style.setProperty("--dh", dh);
+
     requestAnimationFrame(() => delete lastEl.dataset.flipping);
   });
 }
@@ -45,13 +29,18 @@ function useFlip(ref) {
   const rectRef = useRef(null);
   useLayoutEffect(() => {
     if (ref.current) {
-      if (!rectRef.current) {
-        rectRef.current = getRect(ref.current);
-      }
+      if (!rectRef.current) rectRef.current = getRect(ref.current);
+
       flip(rectRef.current, ref.current);
       rectRef.current = getRect(ref.current);
     }
   });
+}
+
+function ImageTitle(props) {
+  const ref = useRef(null);
+  useFlip(ref);
+  return <span {...props} ref={ref} data-flip className="title" />;
 }
 
 function Image({ src, title, selected, ...props }) {
@@ -60,53 +49,51 @@ function Image({ src, title, selected, ...props }) {
 
   return (
     <div
-      {...props}
-      className="image"
-      key={src}
+      className="web-image web-frame"
       data-selected={selected || undefined}
+      {...props}
     >
-      <img data-flip src={src} ref={ref} />
+      <div className="web-top-bar"></div>
+      <img src={src} data-flip ref={ref} />
     </div>
   );
 }
 
-function PrototypeSection(props) {
+function WebProjectSection({ svg, title, subtitle, slides }) {
   const [selected, setSelected] = useState(0);
 
   return (
     <div>
       <div className="logo-prototype">
-        <div className="logo-p">{props.svg}</div>
+        <div className="logo-p">{svg}</div>
+
         <div className="logo-t">
           <span>
             <a
               style={{ color: "white", textDecoration: "none" }}
-              href="https://www.figma.com/proto/LceSUNxufCz4wIyP7wWAcs/Ezmanager?page-id=0%3A1&node-id=85-46&viewport=235%2C343%2C0.1&t=D8zh8BYYHvvhzSNY-1&scaling=scale-down&starting-point-node-id=85%3A46"
+              href="#"
               target="_blank"
             >
-              {props.title} (click title to view)
+              {title} (click title to view)
             </a>
           </span>
-          <p>{props.subtitle}</p>
+          <p>{subtitle}</p>
         </div>
       </div>
-      <div>
-        <div className="gallery">
-          {slides.map((slide, index) => {
-            return (
-              <Image
-                src={slide.image}
-                title={slide.title}
-                selected={index === selected}
-                key={index}
-                onClick={() => setSelected(index)}
-              />
-            );
-          })}
-        </div>
+
+      <div className="gallery">
+        {slides?.map((slide, index) => (
+          <Image
+            key={index}
+            src={slide.image}
+            title={slide.title}
+            selected={index === selected}
+            onClick={() => setSelected(index)}
+          />
+        ))}
       </div>
     </div>
   );
 }
 
-export default PrototypeSection;
+export default WebProjectSection;

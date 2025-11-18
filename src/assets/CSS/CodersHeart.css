@@ -1,0 +1,52 @@
+.codersheart-wrapper {
+  max-width: 600px;
+  margin: 40px auto;
+}
+
+.codersheart-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.codersheart-thumb img {
+  width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.codersheart-info {
+  margin-top: 15px;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.codersheart-info h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.codersheart-info p {
+  margin: 5px 0 12px 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.codersheart-btn {
+  width: fit-content;
+  display: inline-block;
+  padding: 8px 14px;
+  background: rgba(88, 88, 88, 0.267);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 450px) {
+  .codersheart-wrapper {
+    max-width: 320px;
+  }
+  .codersheart-box{
+    padding: 4px;
+  }
+}

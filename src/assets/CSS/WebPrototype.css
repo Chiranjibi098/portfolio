@@ -1,0 +1,115 @@
+.logo-prototype .logo-p {
+    width: fit-content;
+}
+
+.logo-prototype .logo-t {
+    width: fit-content;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.logo-prototype .logo-t p {
+    width: fit-content;
+    font-family: "IBM Plex Mono", monospace;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.gallery {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    align-items: center;
+}
+
+.web-image {
+    flex: 1 1 100%;
+    opacity: 0.7;
+    transition: opacity 0.3s linear;
+    cursor: pointer;
+}
+
+.web-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.web-image .title {
+    display: block;
+    font-size: 2vw;
+    margin: 0.5rem 0;
+    color: #aaa;
+}
+
+.web-image .title strong {
+    display: block;
+    color: white;
+}
+
+.web-image[data-selected] {
+    opacity: 1;
+    flex-grow: 1.15;
+    flex-shrink: 0.98;
+}
+
+[data-flip] {
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0.5, 1);
+    transform-origin: top left;
+}
+
+[data-flipping] {
+    transition: none;
+    transform: var(--flip-translate) var(--flip-scale);
+    --flip-translate: translate(calc(-1px * var(--dx)), calc(-1px * var(--dy)));
+    --flip-scale: scale(calc(1 / var(--dw)), calc(1 / var(--dh)));
+}
+
+.title[data-flipping] {
+    transform: var(--flip-translate);
+}
+
+.web-frame {
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* When selected, enlarge slightly */
+.web-frame[data-selected] {
+  transform: scale(1.04);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+/* Image styling */
+.web-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Browser UI Bar */
+.web-top-bar {
+  height: 20px;
+  background: #2b2b2b;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dot buttons inside bar (optional) */
+.web-top-bar::before {
+  content: '';
+  display: block;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background: #ff5f57;
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  box-shadow: 15px 0 #ffbd2e, 30px 0 #28c93f;
+}

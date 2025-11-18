@@ -1,11 +1,44 @@
-.logo{
-    margin-top: 20px;
-    max-width: 100px;
+.logo {
+  margin-top: 20px;
+  max-width: 100px;
 }
-.logo-title{
-    margin-top: 5px;
-    text-align: center;
-    max-width: 100px;
-    font-family: "IBM Plex Mono", monospace;
-    font-weight: 200;
+
+.logo-title {
+  margin-top: 5px;
+  text-align: center;
+  max-width: 100px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: small;
+  font-weight: 200;
+}
+
+.Skill-Section {
+  text-align: start;
+  background: black;
+  position: relative;
+}
+
+.logo-wrap {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: nowrap;
+  position: relative;
+}
+
+.logo-wrap::after {
+  display: none;
+}
+
+.logo-wrap svg {
+  width: 50px;
+  height: 50px;
+  filter: none;
+  transition: none;
+}
+
+.logo-wrap svg:hover {
+  transform: none;
+  filter: none;
 }

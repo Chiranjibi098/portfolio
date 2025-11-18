@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"); */
 
 .LandingBody {
   background-color: black;
@@ -34,26 +34,31 @@
 }
 
 .upper-name-section .Description {
-  margin-top: 20px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "IBM Plex Mono", monospace;
   font-weight: 300;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: large;
+  font-size: normal;
   text-align: justify;
-  /* border: 1px dashed white; */
   border-width: 2px;
   border-radius: 5px;
   padding: 20px;
 }
 
 .Skill-Section {
-  margin-top: 40px;
+  margin-top: 20px;
   font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
   max-width: 600px;
-  text-align: center;
+}
+
+.Skills-Wrapper {
+  background-color: #003399;
+  background-image: repeating-radial-gradient(circle, rgba(0,0,0,0.4) 0 1px, transparent 1px 5px);
+  background-size: 8px 8px;
+  padding: 20px 20px 20px 20px;
+  max-width: 600px;
 }
 
 .profile-pic-wrapper {
@@ -101,9 +106,9 @@
 }
 
 .Skill-Section .Skill-Title {
-  text-transform: uppercase;
-  font-weight: 200;
-  letter-spacing: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: large;
+  text-align: start;
 }
 
 .Skill-Section .logo-wrap {
@@ -111,8 +116,25 @@
 }
 
 .prototype-section {
-  margin-top: 40px;
   max-width: 600px;
+}
+
+.prototype-section .prototype-scroll {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.prototype-section .prototype-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.prototype-section .prototype-scroll > div {
+  flex: 0 0 600px;
+  width: 600px;
 }
 
 .prototype-section .logo-prototype {
@@ -126,8 +148,43 @@
   font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
   font-size: large;
-  margin-bottom: 40px;
+}
+
+.prototype-header {
   margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.prototype-controls {
+  display: flex;
+  justify-content: end;
+  gap: 12px;
+}
+
+.prototype-controls button {
+  background: #ffffff20;
+  border: 1px solid #ffffff30;
+  padding: 4px;
+  border-radius: 36px;
+  font-size: small;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.2s ease;
+  width: 56px;
+}
+
+.prototype-controls button:hover {
+  background: #ffffff35;
+}
+
+.prototype-controls .btn-label {
+  font-size: 10px;
+  opacity: 0.8;
+  font-family: "IBM Plex Mono", monospace;
+  margin-left: 2px;
 }
 
 .Resume {
@@ -135,7 +192,6 @@
   font-family: "IBM Plex Mono", monospace;
   font-weight: 500;
   max-width: 600px;
-  margin-bottom: 40px;
 }
 
 .Resume-section-heading {
@@ -147,6 +203,7 @@
 }
 
 .button-resume {
+  margin-top: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -173,13 +230,9 @@
   --hover-btn-color: #ff0000;
   --default-btn-color: #fff;
   --font-size: 16px;
-  /* 👆 this field should not be empty */
   --font-weight: 600;
   --font-family: Menlo, Roboto Mono, monospace;
-  /* 👆 this field should not be empty */
 }
-
-/* button settings 👆 */
 
 .ui-btn {
   box-sizing: border-box;
@@ -431,5 +484,11 @@
   .profile-pic {
     width: 80px;
     height: 80px;
+  }
+  .Skill-Section .logo-wrap {
+    justify-content: center;
+    gap: 14px;
+    max-width: 320px;
+    overflow-x: scroll;
   }
 }

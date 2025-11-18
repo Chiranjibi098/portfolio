@@ -1,4 +1,3 @@
-import React from "react";
 import '../assets/CSS/SkillSet.css';
 function SkillSet(props) {
     return (

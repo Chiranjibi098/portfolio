@@ -1,5 +1,5 @@
 import "../assets/CSS/Prototype-section.css";
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { useState, useLayoutEffect, useRef } from "react";
 
 const slides = [
     {
